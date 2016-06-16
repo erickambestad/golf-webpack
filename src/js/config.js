@@ -1,6 +1,13 @@
+var config = {
+	apiKey: "AIzaSyDiS4X9Rz1_t01wEIbul82s0ZLsrUkuziI",
+	authDomain: "fantasygawlf.firebaseapp.com",
+	databaseURL: "https://fantasygawlf.firebaseio.com",
+	storageBucket: "fantasygawlf.appspot.com",
+};
+
 module.exports = {
 	// MISC
-	FIREBASE: "https://fantasygawlf.firebaseio.com/",
+	FIREBASE: firebase.initializeApp(config),
 
 	// UI FEEDBACK ACTIONS
 	DISPLAY_ERROR: "DISPLAY_ERROR",

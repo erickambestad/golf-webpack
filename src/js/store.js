@@ -6,11 +6,11 @@ import createLogger from 'redux-logger';
 const logger = createLogger();
 
 // Import reducers
-import reducers from '.reducers';
+import allreducers from './reducers';
 
 // All reducers
 var reducers = combineReducers({
-    reducers
+    allreducers
 });
 
 // Create the site's store

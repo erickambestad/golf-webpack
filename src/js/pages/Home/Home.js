@@ -9,8 +9,6 @@ class Home extends React.Component {
   }
 
   render() {
-    const props = this.props;
-
     return(
       <div id="home-page" className="container">
         <h1>Home</h1>

@@ -1,7 +1,7 @@
 'use strict';
 
 import { Map, List } from 'immutable';
-let C = require("../constants");
+let C = require("./config");
 
 module.exports = Map({
   auth: Map({
