@@ -1,11 +1,13 @@
 'use strict';
 
 import { Map, List } from 'immutable';
-let C = require("./config");
+let {
+  ANONYMOUS
+} = require("./config");
 
 module.exports = Map({
   auth: Map({
-    currently: C.ANONYMOUS,
+    currently: ANONYMOUS,
     username: null,
     uid: null
   }),

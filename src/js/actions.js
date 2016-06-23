@@ -9,16 +9,17 @@ import {
 
 
 export function startListeningToAuth() {
-  (dispatch, getState) => {
+  return (dispatch, getState) => {
     FIREBASE.auth().onAuthStateChanged((authData) => {
       if (authData){
         dispatch({
           type: LOGIN_USER,
           uid: authData.uid,
-          username: authData.github.displayName || authData.github.username
+          username: authData.displayName || authData.email
         });
       } else {
-        if (getState().auth.currently !== ANONYMOUS){ // log out if not already logged out
+        let auth = getState().allreducers.get('auth');
+        if (auth.get('currently') !== ANONYMOUS){ // log out if not already logged out
           dispatch({type:LOGOUT});
         }
       }
@@ -27,7 +28,7 @@ export function startListeningToAuth() {
 }
 
 export function attemptLogin(email, password) {
-  (dispatch, getState) => {
+  return (dispatch, getState) => {
     dispatch({type:ATTEMPTING_LOGIN});
     FIREBASE.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       if (error) {
@@ -41,7 +42,7 @@ export function attemptLogin(email, password) {
 }
 
 export function logoutUser() {
-   (dispatch) => {
+   return (dispatch) => {
     FIREBASE.auth().signOut().then(function() {
       dispatch({type:LOGOUT});
     }, function(error) {

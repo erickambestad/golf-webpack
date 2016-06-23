@@ -12,28 +12,17 @@ import { startListeningToAuth } from './actions';
 // Pages
 import Template from './pages/Template/Template';
 import Home from './pages/Home/Home-container';
-import Login from './pages/Login/Login';
-
-function requireAccess() {
-  var auth = FIREBASE.auth().currentUser;
-  if (auth) {
-    return true;
-  } else {
-     browserHistory.push('/login')
-  }
-}
 
 render((
   <Provider store={store}>
     <Router history={browserHistory}>
 			<Route component={Template}>
-				<Route path="/" component={Home}  onEnter={requireAccess()}/>
-				<Route path="/login" component={Login}/>
+				<Route path="/" component={Home} />
 			</Route>
     </Router>
   </Provider>
 ), document.getElementById('app'));
 
-// setTimeout(() => {
-//   store.dispatch( startListeningToAuth() );
-// });
+setTimeout(() => {
+  store.dispatch( startListeningToAuth() );
+});

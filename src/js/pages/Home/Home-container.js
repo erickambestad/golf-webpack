@@ -6,18 +6,27 @@ import { connect } from 'react-redux';
 // Page component to bind props and dispatchers to
 import Home from './Home';
 
-// Component actions
-// import {
-// } from './Home-actions'
+//Component actions
+import {
+  attemptLogin,
+  logoutUser
+} from '../../actions'
 
 const mapStateToProps = (state) => {
-  const sectionState = state.HomeReducer;
+  const reducer = state.allreducers;
   return {
+    auth: reducer.get('auth')
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    attemptLogin: (email, password) => {
+      dispatch(attemptLogin(email, password))
+    },
+    logoutUser: () => {
+      dispatch(logoutUser())
+    }
   }
 }
 
